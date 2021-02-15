@@ -54,6 +54,9 @@ def logout():
 @login_required
 def scrape_recipes():
     if request.method == 'GET':
+        # Delete all entries in Recipe table
+        Recipe.query.delete()
+        
         headers = app.config['HEADERS']
         params = app.config['MENDATORY_PARAMS']
         data = app.config['QUERY_DATA']
